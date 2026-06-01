@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/index.ts"],
+  "sourcesContent": ["export function foo(a, b) {\r\n  return a + b;\r\n}"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAO,SAAS,IAAI,GAAG,GAAG;AACxB,SAAO,IAAI;AACb;",
+  "names": []
+}
