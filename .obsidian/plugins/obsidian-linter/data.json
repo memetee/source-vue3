@@ -12,7 +12,7 @@
     },
     "escape-yaml-special-characters": {
       "enabled": false,
-      "try-to-escape-single-line-arrays": false
+      "try-to-escape-single-line-arrays": true
     },
     "force-yaml-escape": {
       "enabled": false,
@@ -66,7 +66,7 @@
       "date-modified-key": "date modified",
       "date-modified-source-of-truth": "file system",
       "format": "dddd, MMMM Do YYYY, h:mm:ss a",
-      "convert-to-utc": false,
+      "convert-to-utc": true,
       "update-on-file-contents-updated": "never"
     },
     "yaml-title": {
@@ -93,10 +93,10 @@
     },
     "header-increment": {
       "enabled": false,
-      "start-at-h2": false
+      "start-at-h2": true
     },
     "headings-start-line": {
-      "enabled": false
+      "enabled": true
     },
     "remove-trailing-punctuation-in-heading": {
       "enabled": false,
@@ -115,7 +115,7 @@
     "auto-correct-common-misspellings": {
       "enabled": false,
       "ignore-words": "",
-      "skip-words-with-multiple-capitals": false,
+      "skip-words-with-multiple-capitals": true,
       "extra-auto-correct-files": []
     },
     "blockquote-style": {
@@ -127,7 +127,7 @@
     },
     "default-language-for-code-fences": {
       "enabled": false,
-      "default-language": ""
+      "default-language": "bash"
     },
     "emphasis-style": {
       "enabled": false,
@@ -135,12 +135,13 @@
     },
     "no-bare-urls": {
       "enabled": false,
-      "no-bare-uris": false
+      "no-bare-uris": true
     },
     "ordered-list-style": {
       "enabled": false,
       "number-style": "ascending",
-      "list-end-style": "."
+      "list-end-style": ".",
+      "preserve-start": true
     },
     "proper-ellipsis": {
       "enabled": false
@@ -178,7 +179,7 @@
     },
     "compact-yaml": {
       "enabled": false,
-      "inner-new-lines": false
+      "inner-new-lines": true
     },
     "consecutive-blank-lines": {
       "enabled": false
@@ -203,7 +204,7 @@
       "enabled": false
     },
     "heading-blank-lines": {
-      "enabled": false,
+      "enabled": true,
       "bottom": true,
       "empty-line-after-yaml": true
     },
@@ -238,7 +239,7 @@
       "enabled": false
     },
     "space-between-chinese-japanese-or-korean-and-english-or-numbers": {
-      "enabled": false,
+      "enabled": true,
       "english-symbols-punctuation-before": "-+;:'\"°%$)]",
       "english-symbols-punctuation-after": "-+'\"([¥$"
     },
@@ -273,10 +274,10 @@
   },
   "lintOnSave": true,
   "recordLintOnSaveLogs": false,
-  "displayChanged": true,
-  "suppressMessageWhenNoChange": true,
+  "displayChanged": false,
+  "suppressMessageWhenNoChange": false,
   "lintOnFileChange": false,
-  "displayLintOnFileChangeNotice": false,
+  "displayLintOnFileChangeNotice": true,
   "settingsConvertedToConfigKeyValues": true,
   "additionalFileExtensions": [],
   "foldersToIgnore": [],

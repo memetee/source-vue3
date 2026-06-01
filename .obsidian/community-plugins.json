@@ -3,5 +3,6 @@
   "obsidian-linter",
   "obsidian-git",
   "prettier",
-  "obsidian-quiet-outline"
+  "obsidian-quiet-outline",
+  "editor-width-slider"
 ]

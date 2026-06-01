@@ -1,19 +1,33 @@
 {
   "note/1-搭建环境.md": {
-    "scroll": 317.59002976190476,
+    "scroll": 438.37574404761904,
     "cursor": {
       "from": {
-        "line": 335,
-        "ch": 13
+        "line": 456,
+        "ch": 5
       },
       "to": {
-        "line": 335,
-        "ch": 13
+        "line": 456,
+        "ch": 5
       }
     },
     "expandedKeys": [
       "item-2-11",
       "item-2-0"
     ]
+  },
+  "note/2-响应式（1）.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
   }
 }
