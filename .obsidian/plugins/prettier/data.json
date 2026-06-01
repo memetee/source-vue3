@@ -1,0 +1,19 @@
+{
+  "version": 20002,
+  "settings": {
+    "formatOnSave": true,
+    "formatOnFileChange": true,
+    "formatCodeBlock": true,
+    "removeExtraSpaces": false,
+    "addTrailingSpaces": true,
+    "languageMappings": {},
+    "formatOptions": {
+      "semi": false,
+      "singleQuote": true,
+      "htmlWhitespaceSensitivity": "ignore",
+      "trailingComma": "all",
+      "arrowParens": "avoid"
+    },
+    "ignorePatterns": "**/.git\n**/.svn\n**/.hg\n**/node_modules"
+  }
+}

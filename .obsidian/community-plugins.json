@@ -1,5 +1,7 @@
 [
   "obsidian-excalidraw-plugin",
   "obsidian-linter",
-  "obsidian-git"
+  "obsidian-git",
+  "prettier",
+  "obsidian-quiet-outline"
 ]
