@@ -1,14 +1,14 @@
 {
   "note/1-搭建环境.md": {
-    "scroll": 438.37574404761904,
+    "scroll": 143.65779057214826,
     "cursor": {
       "from": {
-        "line": 456,
-        "ch": 5
+        "line": 120,
+        "ch": 1
       },
       "to": {
-        "line": 456,
-        "ch": 5
+        "line": 114,
+        "ch": 0
       }
     },
     "expandedKeys": [
@@ -17,6 +17,39 @@
     ]
   },
   "note/2-响应式（1）.md": {
+    "scroll": 337.8139880952381,
+    "cursor": {
+      "from": {
+        "line": 366,
+        "ch": 0
+      },
+      "to": {
+        "line": 366,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-2-4"
+    ]
+  },
+  "note/1-搭建环境1.md": {
+    "scroll": 236.68359375,
+    "cursor": {
+      "from": {
+        "line": 268,
+        "ch": 13
+      },
+      "to": {
+        "line": 268,
+        "ch": 13
+      }
+    },
+    "expandedKeys": [
+      "item-2-11",
+      "item-2-0"
+    ]
+  },
+  "未命名.md": {
     "scroll": 0,
     "cursor": {
       "from": {
@@ -29,5 +62,97 @@
       }
     },
     "expandedKeys": []
+  },
+  "note/未命名.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "note/3-链表.md": {
+    "scroll": 154.28348214285714,
+    "cursor": {
+      "from": {
+        "line": 191,
+        "ch": 0
+      },
+      "to": {
+        "line": 191,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-2-1"
+    ]
+  },
+  "note/4-响应式（2）.md": {
+    "scroll": 151.04166666666666,
+    "cursor": {
+      "from": {
+        "line": 653,
+        "ch": 0
+      },
+      "to": {
+        "line": 653,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-2-0",
+      "item-2-8",
+      "item-2-11"
+    ]
+  },
+  "note/5-响应式（3）.md": {
+    "scroll": 253.10044642857142,
+    "cursor": {
+      "from": {
+        "line": 272,
+        "ch": 0
+      },
+      "to": {
+        "line": 272,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "Excalidraw/未命名.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "note/6-响应式（4）.md": {
+    "scroll": 499.4381510416667,
+    "cursor": {
+      "from": {
+        "line": 529,
+        "ch": 0
+      },
+      "to": {
+        "line": 529,
+        "ch": 0
+      }
+    },
+    "expandedKeys": [
+      "item-2-0"
+    ]
   }
 }

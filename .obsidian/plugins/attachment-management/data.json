@@ -1,0 +1,19 @@
+{
+  "attachPath": {
+    "attachmentRoot": "assets",
+    "saveAttE": "nextToNote",
+    "attachmentPath": "${notename}",
+    "attachFormat": "${notename}-${md5}",
+    "type": "GLOBAL",
+    "extensionOverride": []
+  },
+  "dateFormat": "YYYYMMDDHHmmssSSS",
+  "excludeExtensionPattern": "",
+  "autoRenameAttachment": true,
+  "excludedPaths": "",
+  "excludePathsArray": [],
+  "excludeSubpaths": false,
+  "originalNameStorage": [],
+  "overridePath": {},
+  "disableNotification": false
+}
