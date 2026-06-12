@@ -1,14 +1,14 @@
 {
   "note/1-搭建环境.md": {
-    "scroll": 143.65779057214826,
+    "scroll": 709.938244047619,
     "cursor": {
       "from": {
-        "line": 120,
-        "ch": 1
+        "line": 636,
+        "ch": 3
       },
       "to": {
-        "line": 114,
-        "ch": 0
+        "line": 636,
+        "ch": 3
       }
     },
     "expandedKeys": [
@@ -17,15 +17,15 @@
     ]
   },
   "note/2-响应式（1）.md": {
-    "scroll": 279.29017857142856,
+    "scroll": 299.4929245283019,
     "cursor": {
       "from": {
-        "line": 302,
-        "ch": 15
+        "line": 153,
+        "ch": 7
       },
       "to": {
-        "line": 302,
-        "ch": 15
+        "line": 153,
+        "ch": 7
       }
     },
     "expandedKeys": [
@@ -78,7 +78,7 @@
     "expandedKeys": []
   },
   "note/3-链表.md": {
-    "scroll": 153.52157738095238,
+    "scroll": 172.5501497005988,
     "cursor": {
       "from": {
         "line": 191,
@@ -94,15 +94,15 @@
     ]
   },
   "note/4-响应式（2）.md": {
-    "scroll": 151.04166666666666,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 653,
-        "ch": 0
+        "line": 9,
+        "ch": 7
       },
       "to": {
-        "line": 653,
-        "ch": 0
+        "line": 9,
+        "ch": 7
       }
     },
     "expandedKeys": [
@@ -112,15 +112,15 @@
     ]
   },
   "note/5-响应式（3）.md": {
-    "scroll": 105.70833333333333,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 99,
-        "ch": 6
+        "line": 329,
+        "ch": 19
       },
       "to": {
-        "line": 99,
-        "ch": 2
+        "line": 329,
+        "ch": 19
       }
     },
     "expandedKeys": []
@@ -140,15 +140,15 @@
     "expandedKeys": []
   },
   "note/6-响应式（4）.md": {
-    "scroll": 331.7388392857143,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 361,
-        "ch": 17
+        "line": 27,
+        "ch": 32
       },
       "to": {
-        "line": 361,
-        "ch": 17
+        "line": 27,
+        "ch": 32
       }
     },
     "expandedKeys": [
@@ -156,15 +156,211 @@
     ]
   },
   "note/7-响应式（5）.md": {
-    "scroll": 840.3995535714286,
+    "scroll": 0,
     "cursor": {
       "from": {
-        "line": 867,
-        "ch": 29
+        "line": 14,
+        "ch": 12
       },
       "to": {
-        "line": 867,
-        "ch": 29
+        "line": 14,
+        "ch": 12
+      }
+    },
+    "expandedKeys": []
+  },
+  "note/8-计算属性.md": {
+    "scroll": 756.9876302083334,
+    "cursor": {
+      "from": {
+        "line": 781,
+        "ch": 33
+      },
+      "to": {
+        "line": 781,
+        "ch": 33
+      }
+    },
+    "expandedKeys": []
+  },
+  "note/2-响应式基础.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "note/2-基础响应式.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 18,
+        "ch": 0
+      },
+      "to": {
+        "line": 17,
+        "ch": 12
+      }
+    },
+    "expandedKeys": []
+  },
+  "note/4-响应式中的链表.md": {
+    "scroll": 632.3979591836735,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "note/4-响应式核心.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "note/3-认识链表.md": {
+    "scroll": 63.764322916666664,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "note/4-响应式一.md": {
+    "scroll": 0,
+    "cursor": {
+      "from": {
+        "line": 0,
+        "ch": 0
+      },
+      "to": {
+        "line": 0,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "note/4-响应式(1).md": {
+    "scroll": 261.4300595238095,
+    "cursor": {
+      "from": {
+        "line": 599,
+        "ch": 99
+      },
+      "to": {
+        "line": 599,
+        "ch": 99
+      }
+    },
+    "expandedKeys": []
+  },
+  "note/5-响应式(2).md": {
+    "scroll": 319.0863095238095,
+    "cursor": {
+      "from": {
+        "line": 352,
+        "ch": 14
+      },
+      "to": {
+        "line": 352,
+        "ch": 14
+      }
+    },
+    "expandedKeys": []
+  },
+  "note/6-响应式(3).md": {
+    "scroll": 255.62239583333334,
+    "cursor": {
+      "from": {
+        "line": 178,
+        "ch": 7
+      },
+      "to": {
+        "line": 178,
+        "ch": 7
+      }
+    },
+    "expandedKeys": []
+  },
+  "note/7-响应式(4).md": {
+    "scroll": 1101.4888392857142,
+    "cursor": {
+      "from": {
+        "line": 1146,
+        "ch": 0
+      },
+      "to": {
+        "line": 1146,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "note/9-watch监听.md": {
+    "scroll": 664.2380952380952,
+    "cursor": {
+      "from": {
+        "line": 682,
+        "ch": 0
+      },
+      "to": {
+        "line": 682,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "note/10-数组响应式.md": {
+    "scroll": 208.33333333333334,
+    "cursor": {
+      "from": {
+        "line": 231,
+        "ch": 0
+      },
+      "to": {
+        "line": 231,
+        "ch": 0
+      }
+    },
+    "expandedKeys": []
+  },
+  "note/12-其他属性.md": {
+    "scroll": 232.375,
+    "cursor": {
+      "from": {
+        "line": 307,
+        "ch": 21
+      },
+      "to": {
+        "line": 307,
+        "ch": 21
       }
     },
     "expandedKeys": []
