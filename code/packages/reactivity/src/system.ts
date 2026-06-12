@@ -4,8 +4,7 @@ import { ReactiveEffect } from './effect'
  * 链表节点
  */
 export interface Link {
-  // 保存effect
-  sub: ReactiveEffect
+  sub: Sub
 
   // 下一个节点,如果没有就是undefined
   nextSub: Link | undefined
@@ -14,7 +13,7 @@ export interface Link {
   prevSub: Link | undefined
 
   // 订阅者
-  dep: Dep
+  dep: Dependency
 
   // 下一个订阅节点
   nextDep: Link | undefined
@@ -23,12 +22,26 @@ export interface Link {
 /**
  * 依赖项
  */
-interface Dep {
+export interface Dependency {
   // 发布者链表的头节点
   subs: Link | undefined
 
   // 发布者链表的尾节点
   subsTail: Link | undefined
+}
+
+/**
+ * 订阅者
+ */
+export interface Sub {
+  // 发布者链表的头节点
+  deps: Link | undefined
+
+  // 发布者链表的尾节点
+  depsTail: Link | undefined
+
+  //是否被追踪
+  tracking: boolean
 }
 
 // 保存已经清理掉的节点，留着复用
@@ -98,6 +111,19 @@ export function link(dep, sub) {
   }
 }
 
+function processComputedUpdate(sub) {
+  // 如果subs有的时候在执行
+  if (sub.subs && sub.update()) {
+    /**
+     * 更新计算属性
+     * 1.调用 update
+     * 2. 通知 subs链表上的所有的 sub，重新执行
+     */
+    // sub.update返回true，表示值发生了变化
+    propagate(sub.subs)
+  }
+}
+
 /**
  * 传播更新
  * @param subs 依赖项
@@ -106,9 +132,14 @@ export function propagate(subs) {
   let link = subs
   const queueEffect = []
   while (link) {
-    const sub = link.sub;
-    if (!sub.tracking) {
-      queueEffect.push(link.sub)
+    const sub = link.sub
+    if (!sub.tracking && !sub.dirty) {
+      sub.dirty = true
+      if ('update' in sub) {
+        processComputedUpdate(sub)
+      } else {
+        queueEffect.push(link.sub)
+      }
     }
     link = link.nextSub
   }
@@ -117,6 +148,7 @@ export function propagate(subs) {
 
 export function endTrack(sub) {
   sub.tracking = false // 结束追踪依赖
+  sub.dirty = false
   const depsTail = sub.depsTail
 
   if (depsTail) {
@@ -157,7 +189,6 @@ function clearTracking(link) {
     link.nextDep = linkPool
 
     linkPool = link
-    console.log('保存了linkPool', linkPool)
     link = nextDep
   }
 }

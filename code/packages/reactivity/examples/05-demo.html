@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        padding: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module">
+      // 我们自己的
+      import { reactive, ref, effect } from '../dist/reactivity.esm.js'
+
+      // 官方的
+      // import {
+      //   reactive,
+      //   effect,
+      //   ref,
+      // } from '../../../node_modules/vue/dist/vue.esm-browser.prod.js'
+
+      const a = ref(0)
+
+      /**
+       * 如果 target.a 是一个ref，那么就直接把值给他，不要让他 .value
+       * 如果更新了 state.a 它之前是一个 ref, 那么会修改原始的 ref.value 的值 等于 newValue
+       * 如果 newValue 是一个ref，那就算了 （ state.a=ref(1) ）
+       */
+      const state = reactive({
+        a: {
+          b: 0,
+        },
+      })
+
+      let e = effect(() => {
+        console.log(state.a.b)
+      })
+
+      setTimeout(() => {
+        state.a.b = 1
+      }, 1000)
+    </script>
+  </body>
+</html>

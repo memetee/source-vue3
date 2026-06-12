@@ -21,13 +21,13 @@
        * 它既是一个sub，又是一个dep
        */
       const c = computed(() => {
-        console.log('compute执行了')
+        console.log('compute执行了123')
         return count.value + 1
       })
 
-      let e = effect(() => {
-        console.log('effect', c.value)
-      })
+      // let e = effect(() => {
+      //   console.log('effect', c.value)
+      // })
 
       setTimeout(() => {
         count.value = 1

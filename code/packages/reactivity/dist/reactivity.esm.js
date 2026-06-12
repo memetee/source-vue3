@@ -1,3 +1,14 @@
+// packages/shared/src/index.ts
+function isObject(value) {
+  return value !== null && typeof value === "object";
+}
+function hasChanged(newVal, oldVal) {
+  return !Object.is(newVal, oldVal);
+}
+function isFunction(value) {
+  return typeof value === "function";
+}
+
 // packages/reactivity/src/system.ts
 var linkPool;
 function link(dep, sub) {
@@ -40,13 +51,23 @@ function link(dep, sub) {
     sub.depsTail = newLink;
   }
 }
+function processComputedUpdate(sub) {
+  if (sub.subs && sub.update()) {
+    propagate(sub.subs);
+  }
+}
 function propagate(subs) {
   let link2 = subs;
   const queueEffect = [];
   while (link2) {
     const sub = link2.sub;
-    if (!sub.tracking) {
-      queueEffect.push(link2.sub);
+    if (!sub.tracking && !sub.dirty) {
+      sub.dirty = true;
+      if ("update" in sub) {
+        processComputedUpdate(sub);
+      } else {
+        queueEffect.push(link2.sub);
+      }
     }
     link2 = link2.nextSub;
   }
@@ -54,6 +75,7 @@ function propagate(subs) {
 }
 function endTrack(sub) {
   sub.tracking = false;
+  sub.dirty = false;
   const depsTail = sub.depsTail;
   if (depsTail) {
     if (depsTail.nextDep) {
@@ -87,13 +109,15 @@ function clearTracking(link2) {
     link2.dep = link2.sub = void 0;
     link2.nextDep = linkPool;
     linkPool = link2;
-    console.log("\u4FDD\u5B58\u4E86linkPool", linkPool);
     link2 = nextDep;
   }
 }
 
 // packages/reactivity/src/effect.ts
 var activeSub;
+function setActiveSub(sub) {
+  activeSub = sub;
+}
 var ReactiveEffect = class {
   /**
    * 依赖链表的头节点
@@ -108,6 +132,10 @@ var ReactiveEffect = class {
    * 是否被追踪
    */
   tracking = false;
+  /**
+   * 增加一个标识，标识脏的
+   */
+  dirty = false;
   constructor(fn) {
     this.fn = fn;
   }
@@ -138,7 +166,106 @@ function effect(fn, options) {
   return runner;
 }
 
+// packages/reactivity/src/dep.ts
+var targetMap = /* @__PURE__ */ new WeakMap();
+function track(target, key) {
+  if (!activeSub) {
+    return;
+  }
+  let depsMap = targetMap.get(target);
+  if (!depsMap) {
+    depsMap = /* @__PURE__ */ new Map();
+    targetMap.set(target, depsMap);
+  }
+  let dep = depsMap.get(key);
+  if (!dep) {
+    dep = new Dep();
+    depsMap.set(key, dep);
+  }
+  link(dep, activeSub);
+}
+function trigger(target, key) {
+  const depsMap = targetMap.get(target);
+  if (!depsMap) {
+    return;
+  }
+  const dep = depsMap.get(key);
+  if (!dep) {
+    return;
+  }
+  propagate(dep.subs);
+}
+var Dep = class {
+  /**
+   * 订阅者链表的头节点
+   */
+  subs;
+  /**
+   * 订阅者链表的尾节点
+   */
+  subsTail;
+  constructor() {
+  }
+};
+
+// packages/reactivity/src/baseHandlers.ts
+var mutableHandlers = {
+  get(target, key, receiver) {
+    track(target, key);
+    const res = Reflect.get(target, key, receiver);
+    if (isRef(res)) {
+      return res.value;
+    }
+    if (isObject(res)) {
+      return reactive(res);
+    }
+    return res;
+  },
+  set(target, key, newValue, receiver) {
+    const oldValue = target[key];
+    const res = Reflect.set(target, key, newValue, receiver);
+    if (isRef(oldValue) && !isRef(newValue)) {
+      oldValue.value = newValue;
+      return res;
+    }
+    if (hasChanged(newValue, oldValue)) {
+      trigger(target, key);
+    }
+    return res;
+  }
+};
+
+// packages/reactivity/src/reactive.ts
+var reactiveMap = /* @__PURE__ */ new WeakMap();
+var reactiveSet = /* @__PURE__ */ new WeakSet();
+function reactive(target) {
+  return createReactiveObject(target);
+}
+function createReactiveObject(target) {
+  if (!isObject(target)) {
+    return target;
+  }
+  if (isReactive(target)) {
+    return target;
+  }
+  const existingProxy = reactiveMap.get(target);
+  if (existingProxy) {
+    return existingProxy;
+  }
+  const proxy = new Proxy(target, mutableHandlers);
+  reactiveMap.set(target, proxy);
+  reactiveSet.add(proxy);
+  return proxy;
+}
+function isReactive(target) {
+  return reactiveSet.has(target);
+}
+
 // packages/reactivity/src/ref.ts
+var ReactiveFlags = /* @__PURE__ */ ((ReactiveFlags2) => {
+  ReactiveFlags2["IS_REF"] = "__v_isRef";
+  return ReactiveFlags2;
+})(ReactiveFlags || {});
 var RefImpl = class {
   _value;
   // ref获取到的值（实际值）
@@ -168,8 +295,10 @@ var RefImpl = class {
    * set 用来收集更新
    */
   set value(newVal) {
-    this._value = newVal;
-    triggerRef(this);
+    if (hasChanged(newVal, this._value)) {
+      this._value = isObject(newVal) ? reactive(newVal) : newVal;
+      triggerRef(this);
+    }
   }
 };
 function ref(value) {
@@ -188,12 +317,75 @@ function triggerRef(dep) {
     propagate(dep.subs);
   }
 }
+
+// packages/reactivity/src/computed.ts
+var ComputedRefImpl = class {
+  constructor(fn, setter) {
+    this.fn = fn;
+    this.setter = setter;
+  }
+  fn;
+  setter;
+  ["__v_isRef" /* IS_REF */] = true;
+  _value;
+  subs;
+  subsTail;
+  deps;
+  depsTail;
+  tracking = false;
+  dirty = true;
+  get value() {
+    if (this.dirty) {
+      this.update();
+    }
+    if (activeSub) {
+      link(this, activeSub);
+    }
+    return this._value;
+  }
+  set value(newValue) {
+    if (this.setter) {
+      this.setter(newValue);
+    } else {
+      console.warn("\u6211\u53EA\u8BFB\u7684\uFF0C\u4F60\u522B\u778E\u73A9\uFF01");
+    }
+  }
+  update() {
+    const prevSub = activeSub;
+    setActiveSub(this);
+    startTrack(this);
+    try {
+      let oldValue = this._value;
+      this._value = this.fn();
+      this.dirty = false;
+      return hasChanged(this._value, oldValue);
+    } finally {
+      endTrack(this);
+      setActiveSub(prevSub);
+    }
+  }
+};
+function computed(getterOrOptions) {
+  let getter;
+  let setter;
+  if (isFunction(getterOrOptions)) {
+    getter = getterOrOptions;
+  } else {
+    getter = getterOrOptions.get;
+    setter = getterOrOptions.set;
+  }
+  return new ComputedRefImpl(getter, setter);
+}
 export {
   ReactiveEffect,
+  ReactiveFlags,
   activeSub,
+  computed,
   effect,
   isRef,
+  reactive,
   ref,
+  setActiveSub,
   trackRef,
   triggerRef
 };

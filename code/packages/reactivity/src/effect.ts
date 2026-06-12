@@ -3,7 +3,9 @@ import { startTrack, endTrack } from './system'
 
 // 全局变量，用来保存当前正在执行依赖（effect的回调函数）
 export let activeSub
-
+export function setActiveSub(sub) {
+  activeSub = sub
+}
 export class ReactiveEffect {
   /**
    * 依赖链表的头节点
@@ -20,8 +22,12 @@ export class ReactiveEffect {
   /**
    * 是否被追踪
    */
-  tracking = false;
+  tracking = false
 
+  /**
+   * 增加一个标识，标识脏的
+   */
+  dirty = false
   constructor(fn) {
     this.fn = fn
   }
@@ -31,7 +37,7 @@ export class ReactiveEffect {
     const prevSub = activeSub
     activeSub = this
 
-    startTrack(this);
+    startTrack(this)
     try {
       return this.fn()
     } finally {
@@ -64,4 +70,3 @@ export function effect(fn, options) {
   runner.effect = e
   return runner
 }
-
